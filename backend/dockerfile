@@ -1,0 +1,24 @@
+#backend docker file
+
+FROM node:18-alpine 
+
+#directory 
+WORKDIR /app
+
+#copy
+COPY package*.json ./
+
+#install
+RUN npm install  
+
+#copy
+COPY . .
+
+#run directory  
+RUN mkdir -p /app/data
+
+#exposing port 
+EXPOSE 5000
+
+#CMD
+CMD [ "npm", "start" ]

@@ -1,0 +1,30 @@
+#frontend docker 
+
+#base image 
+FROM node:18-alpine 
+
+#working directory 
+WORKDIR /app
+
+#copying files
+COPY package*.json ./
+
+#dependencies to be installed
+RUN npm install
+
+#copying all application files
+COPY . .
+
+#building the production application 
+RUN npm run build 
+
+#using nginx to serve the built files 
+FROM nginx:alpine
+
+COPY --from=0 /app/dist /usr/share/nginx/html
+
+#exposing port 
+EXPOSE 80 
+
+#starting nginx to serve the application 
+CMD [ "nginx", "-g", "daemon off;" ]
