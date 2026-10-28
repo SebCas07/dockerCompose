@@ -8,8 +8,8 @@ steps:
       './frontend'
     ] 
     # Push the image to Container Registry 
-    - name: 'gcr.io/cloud-builders/docker' 
-      args: ['push', 'gcr.io/$PROJECT_ID/recipe-frontend'] 
+  - name: 'gcr.io/cloud-builders/docker' 
+    args: ['push', 'gcr.io/$PROJECT_ID/recipe-frontend'] 
     
     # Deploy to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud' 
