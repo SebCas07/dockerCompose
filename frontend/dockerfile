@@ -11,6 +11,8 @@ COPY package*.json ./
 
 #dependencies to be installed
 RUN npm install
+ARG VITE_API_URL 
+ENV VITE_API_URL=$VITE_API_URL
 
 #copying all application files
 COPY . .
